@@ -6,7 +6,7 @@ import { deleteEducation } from '../../actions/profileActions';
 
 class Education extends Component {
 
-  handleDelete(id){
+  handleDelete(id) {
     this.props.deleteEducation(id);
   }
 
@@ -29,17 +29,19 @@ class Education extends Component {
     return (
       <div >
         <h4 className="mb-4">Education Credentials</h4>
-        <table className="table">
-          <thead>
-            <tr>
-              <th>School</th>
-              <th>Degree</th>
-              <th>Field Of Study</th>
-              <th>Years</th>
-            </tr>
-            {educationComp}
-          </thead>
-        </table>
+        <div style={{ overflow: 'auto', whiteSpace: 'nowrap' }}>
+          <table className="table">
+            <thead>
+              <tr>
+                <th>School</th>
+                <th>Degree</th>
+                <th>Field Of Study</th>
+                <th>Years</th>
+              </tr>
+              {educationComp}
+            </thead>
+          </table>
+        </div>
       </div>
     )
   }
@@ -49,4 +51,4 @@ Education.propTypes = {
   deleteExperience: PropTypes.func.isRequired
 }
 
-export default connect(null, {deleteEducation})(Education);
+export default connect(null, { deleteEducation })(Education);

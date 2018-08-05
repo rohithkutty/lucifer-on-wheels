@@ -6,7 +6,7 @@ import { deleteExperience } from '../../actions/profileActions';
 
 class Experience extends Component {
 
-  handleDelete(id){
+  handleDelete(id) {
     this.props.deleteExperience(id);
   }
 
@@ -28,17 +28,19 @@ class Experience extends Component {
     return (
       <div >
         <h4 className="mb-4">Experience Credentials</h4>
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Company</th>
-              <th>Title</th>
-              <th>Years</th>
-              <th></th>
-            </tr>
-            {experienceComp}
-          </thead>
-        </table>
+        <div style={{ overflow:'auto', whiteSpace:'nowrap'}}>
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Company</th>
+                <th>Title</th>
+                <th>Years</th>
+                <th></th>
+              </tr>
+              {experienceComp}
+            </thead>
+          </table>
+        </div>
       </div>
     )
   }
@@ -48,4 +50,4 @@ Experience.propTypes = {
   deleteExperience: PropTypes.func.isRequired
 }
 
-export default connect(null, {deleteExperience})(Experience);
+export default connect(null, { deleteExperience })(Experience);

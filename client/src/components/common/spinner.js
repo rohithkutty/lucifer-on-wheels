@@ -1,5 +1,5 @@
-import React from 'react';
-import spinner from '../../img/loading-spinenr.gif';
+import React from "react";
+import spinner from "../../img/loading-spinenr.gif";
 
 export default () => {
   return (
@@ -7,7 +7,8 @@ export default () => {
       <img
         src={spinner}
         alt="Loading..."
-        style={{ width: '200px', margin: 'auto', display: 'block' }} />
+        style={{ width: "200px", margin: "auto", display: "block" }}
+      />
     </div>
-  )
-}
+  );
+};

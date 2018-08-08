@@ -7,7 +7,7 @@ import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import InputGroup from "../common/InputGroup";
 import SelectListGroup from "../common/SelectListGroup";
 import { createProfile, getCurrentProfile } from "../../actions/profileActions";
-import isEmpty from '../../validation/is-empty';
+import isEmpty from "../../validation/is-empty";
 
 class CreateProfile extends Component {
   constructor(props) {
@@ -46,24 +46,36 @@ class CreateProfile extends Component {
     }
 
     if (nextProps.profile) {
-      const profile = nextProps.profile.profile
+      const profile = nextProps.profile.profile;
 
       // Bring Skills array back to csv
-      const SkillsCSV = profile.skills.join(',');
+      const SkillsCSV = profile.skills.join(",");
 
       //if profile field doesn't exist, add or make empty string
-      profile.company = !isEmpty(profile.company) ? profile.company : '';
-      profile.location = !isEmpty(profile.location) ? profile.location : '';
-      profile.website = !isEmpty(profile.website) ? profile.website : '';
-      profile.githubusername = !isEmpty(profile.githubusername) ? profile.githubusername : '';
-      profile.bio = !isEmpty(profile.bio) ? profile.bio : '';
+      profile.company = !isEmpty(profile.company) ? profile.company : "";
+      profile.location = !isEmpty(profile.location) ? profile.location : "";
+      profile.website = !isEmpty(profile.website) ? profile.website : "";
+      profile.githubusername = !isEmpty(profile.githubusername)
+        ? profile.githubusername
+        : "";
+      profile.bio = !isEmpty(profile.bio) ? profile.bio : "";
       profile.social = !isEmpty(profile.social) ? profile.social : {};
 
-      profile.twitter = !isEmpty(profile.social.twitter) ? profile.social.twitter : '';
-      profile.facebook = !isEmpty(profile.social.facebook) ? profile.social.facebook : '';
-      profile.instagram = !isEmpty(profile.social.instagram) ? profile.social.instagram : '';
-      profile.linkedin = !isEmpty(profile.social.linkedin) ? profile.social.linkedin : '';
-      profile.youtube = !isEmpty(profile.social.youtube) ? profile.social.youtube : '';
+      profile.twitter = !isEmpty(profile.social.twitter)
+        ? profile.social.twitter
+        : "";
+      profile.facebook = !isEmpty(profile.social.facebook)
+        ? profile.social.facebook
+        : "";
+      profile.instagram = !isEmpty(profile.social.instagram)
+        ? profile.social.instagram
+        : "";
+      profile.linkedin = !isEmpty(profile.social.linkedin)
+        ? profile.social.linkedin
+        : "";
+      profile.youtube = !isEmpty(profile.social.youtube)
+        ? profile.social.youtube
+        : "";
 
       //set component fields state
       this.setState({
@@ -80,7 +92,7 @@ class CreateProfile extends Component {
         linkedin: profile.linkedin,
         youtube: profile.youtube,
         instagram: profile.instagram
-      })
+      });
     }
   }
 

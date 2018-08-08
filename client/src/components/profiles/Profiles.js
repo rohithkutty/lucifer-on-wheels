@@ -1,18 +1,16 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import Spinner from '../common/spinner';
-import { getProfiles } from '../../actions/profileActions';
-import ProfileItems from './ProfileItem';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import Spinner from "../common/spinner";
+import { getProfiles } from "../../actions/profileActions";
+import ProfileItems from "./ProfileItem";
 
 class Profiles extends Component {
-
   componentDidMount() {
     this.props.getProfiles();
   }
 
   render() {
-
     const { profiles, loading } = this.props.profile;
 
     let profileItems;
@@ -22,9 +20,9 @@ class Profiles extends Component {
       if (profiles.length > 0) {
         profileItems = profiles.map(profile => (
           <ProfileItems key={profile._id} profile={profile} />
-        ))
+        ));
       } else {
-        profileItems = <h4>No profiles found...</h4>
+        profileItems = <h4>No profiles found...</h4>;
       }
     }
     return (
@@ -41,17 +39,20 @@ class Profiles extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
 Profiles.propTypes = {
   getProfiles: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired
-}
+};
 
 const mapStateToProps = state => ({
   profile: state.profile
 });
 
-export default connect(mapStateToProps, { getProfiles })(Profiles);
+export default connect(
+  mapStateToProps,
+  { getProfiles }
+)(Profiles);

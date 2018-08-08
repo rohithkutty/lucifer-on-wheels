@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { Link, withRouter } from 'react-router-dom';
-import TextFieldGroup from '../common/textFieldGroup';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { Link, withRouter } from "react-router-dom";
+import TextFieldGroup from "../common/textFieldGroup";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
-import { addEducation } from '../../actions/profileActions'; 
+import { addEducation } from "../../actions/profileActions";
 
 class AddEducation extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      school: '',
-      degree: '',
-      fieldofstudy: '',
-      from: '',
-      to: '',
+      school: "",
+      degree: "",
+      fieldofstudy: "",
+      from: "",
+      to: "",
       current: false,
-      description: '',
+      description: "",
       errors: {},
       disabled: false
-    }
+    };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
@@ -39,11 +39,11 @@ class AddEducation extends Component {
     });
   }
 
-  componentWillReceiveProps(nextProps){
-    if(nextProps.errors){
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
       this.setState({
         errors: nextProps.errors
-      })
+      });
     }
   }
 
@@ -58,13 +58,12 @@ class AddEducation extends Component {
       to: this.state.to,
       current: this.state.current,
       description: this.state.description
-    }
+    };
 
-    this.props.addEducation(eduData, this.props.history)
+    this.props.addEducation(eduData, this.props.history);
   }
 
   render() {
-
     const { errors } = this.state;
 
     return (
@@ -117,7 +116,7 @@ class AddEducation extends Component {
                   value={this.state.to}
                   onChange={this.handleInput}
                   error={errors.to}
-                  disabled={this.state.disabled ? 'disabled' : ''}
+                  disabled={this.state.disabled ? "disabled" : ""}
                 />
                 <div className="form-check mb-4">
                   <input
@@ -131,7 +130,7 @@ class AddEducation extends Component {
                   />
                   <label htmlFor="current" className="form-check-label">
                     Current Job
-                    </label>
+                  </label>
                 </div>
                 <TextAreaFieldGroup
                   placeholder="Job description"
@@ -150,9 +149,8 @@ class AddEducation extends Component {
             </div>
           </div>
         </div>
-
       </div>
-    )
+    );
   }
 }
 
@@ -160,11 +158,14 @@ AddEducation.propTypes = {
   profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
   addEducation: PropTypes.func.isRequired
-}
+};
 
 const mapStateToProps = state => ({
   profile: state.profile,
-  errors: state.error,
-})
+  errors: state.error
+});
 
-export default connect(mapStateToProps, {addEducation})(withRouter(AddEducation));
+export default connect(
+  mapStateToProps,
+  { addEducation }
+)(withRouter(AddEducation));

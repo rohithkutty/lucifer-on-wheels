@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { Link, withRouter } from 'react-router-dom';
-import TextFieldGroup from '../common/textFieldGroup';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { Link, withRouter } from "react-router-dom";
+import TextFieldGroup from "../common/textFieldGroup";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
-import { addExperience } from '../../actions/profileActions'; 
+import { addExperience } from "../../actions/profileActions";
 
 class AddExperience extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      company: '',
-      title: '',
-      location: '',
-      from: '',
-      to: '',
+      company: "",
+      title: "",
+      location: "",
+      from: "",
+      to: "",
       current: false,
-      description: '',
+      description: "",
       errors: {},
       disabled: false
-    }
+    };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
@@ -39,11 +39,11 @@ class AddExperience extends Component {
     });
   }
 
-  componentWillReceiveProps(nextProps){
-    if(nextProps.errors){
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
       this.setState({
         errors: nextProps.errors
-      })
+      });
     }
   }
 
@@ -58,13 +58,12 @@ class AddExperience extends Component {
       to: this.state.to,
       current: this.state.current,
       description: this.state.description
-    }
+    };
 
-    this.props.addExperience(expData, this.props.history)
+    this.props.addExperience(expData, this.props.history);
   }
 
   render() {
-
     const { errors } = this.state;
 
     return (
@@ -117,7 +116,7 @@ class AddExperience extends Component {
                   value={this.state.to}
                   onChange={this.handleInput}
                   error={errors.to}
-                  disabled={this.state.disabled ? 'disabled' : ''}
+                  disabled={this.state.disabled ? "disabled" : ""}
                 />
                 <div className="form-check mb-4">
                   <input
@@ -131,7 +130,7 @@ class AddExperience extends Component {
                   />
                   <label htmlFor="current" className="form-check-label">
                     Current Job
-                    </label>
+                  </label>
                 </div>
                 <TextAreaFieldGroup
                   placeholder="Job description"
@@ -150,9 +149,8 @@ class AddExperience extends Component {
             </div>
           </div>
         </div>
-
       </div>
-    )
+    );
   }
 }
 
@@ -160,11 +158,14 @@ AddExperience.propTypes = {
   profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
   addExperience: PropTypes.func.isRequired
-}
+};
 
 const mapStateToProps = state => ({
   profile: state.profile,
-  errors: state.error,
-})
+  errors: state.error
+});
 
-export default connect(mapStateToProps, {addExperience})(withRouter(AddExperience));
+export default connect(
+  mapStateToProps,
+  { addExperience }
+)(withRouter(AddExperience));

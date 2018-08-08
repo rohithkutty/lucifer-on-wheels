@@ -1,17 +1,19 @@
 import axios from "axios";
-import jwtDecode from 'jwt-decode';
+import jwtDecode from "jwt-decode";
 import { GET_ERRORS, SET_CURRENT_USER } from "./types";
-import setAuthToken from '../utils/setAuthToken';
+import setAuthToken from "../utils/setAuthToken";
 
 //REGISTER USER
 export const registeruser = (userData, history) => dispatch => {
   axios
     .post("/api/users/register", userData)
-    .then(res => history.push('/login'))
-    .catch(err => dispatch({
-      type: GET_ERRORS,
-      payload: err.response.data
-    }));
+    .then(res => history.push("/login"))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
 };
 
 // Login - get user token
@@ -22,7 +24,7 @@ export const loginuser = userData => dispatch => {
       // Save to local storage
       const { token } = res.data;
       // Set token in local storage
-      localStorage.setItem('jwtToken', token);
+      localStorage.setItem("jwtToken", token);
       // Set token to auth header
       setAuthToken(token);
       // Decode token to get user data
@@ -30,26 +32,28 @@ export const loginuser = userData => dispatch => {
       // Set current user
       dispatch(setCurrentUser(decoded));
     })
-    .catch(err => dispatch({
-      type: GET_ERRORS,
-      payload: err.response.data
-    }))
-}
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
 
 // Set logged in user
-export const setCurrentUser = (decoded) => {
+export const setCurrentUser = decoded => {
   return {
     type: SET_CURRENT_USER,
     payload: decoded
-  }
-}
+  };
+};
 
 // Log user out
-export const logOutUser = () => dispatch =>{
+export const logOutUser = () => dispatch => {
   //remove token from the localstorage
-  localStorage.removeItem('jwtToken');
+  localStorage.removeItem("jwtToken");
   //remove the auth header for future requests
   setAuthToken(false);
   //set current user to empty obj {} which will set isAuthenticated as false
-  dispatch(setCurrentUser({}))
-}
+  dispatch(setCurrentUser({}));
+};

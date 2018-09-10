@@ -79,7 +79,7 @@ class AddEducation extends Component {
                 Add any education that you've had in the past or current
               </p>
               <small className="d-block pb-3">* = required fields</small>
-              <form onSubmit={this.handleSubmit}>
+              <form id="loginForm" onSubmit={this.handleSubmit}>
                 <TextFieldGroup
                   placeholder="* School"
                   name="school"

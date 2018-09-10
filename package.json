@@ -10,7 +10,8 @@
     "client": "npm start --prefix client",
     "cypress": "./node_modules/.bin/cypress open",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "test:eslint": "eslint ./client/src -f node_modules/eslint-detailed-reporter/lib/detailed.js -o eslint/report.html"
+    "test:eslint": "eslint ./client/src -f node_modules/eslint-detailed-reporter/lib/detailed.js -o eslint/report.html",
+    "client-build": "npm run build --prefix client"
   },
   "repository": {
     "type": "git",
@@ -37,11 +38,12 @@
     "mongoose": "^5.2.5",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
+    "path": "^0.12.7",
     "validator": "^10.4.0"
   },
   "devDependencies": {
-    "eslint-detailed-reporter": "^0.7.3",
     "cypress": "^3.0.3",
+    "eslint-detailed-reporter": "^0.7.3",
     "nodemon": "^1.17.5"
   }
 }

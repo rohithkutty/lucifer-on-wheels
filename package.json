@@ -7,7 +7,7 @@
     "client-install": "npm run dependency --prefix ./client",
     "start": "node server.js",
     "server": "nodemon server.js",
-    "client": "npm start --prefix client",
+    "client": "npm start --prefix ./client",
     "cypress": "./node_modules/.bin/cypress open",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test:eslint": "eslint ./client/src -f node_modules/eslint-detailed-reporter/lib/detailed.js -o eslint/report.html",

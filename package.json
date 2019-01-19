@@ -4,7 +4,7 @@
   "description": "Car rental system",
   "main": "server.js",
   "scripts": {
-    "client-install": "npm install --prefix client",
+    "client-install": "npm run dependency --prefix ./client",
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",

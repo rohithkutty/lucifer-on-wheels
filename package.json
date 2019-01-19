@@ -11,7 +11,7 @@
     "cypress": "./node_modules/.bin/cypress open",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test:eslint": "eslint ./client/src -f node_modules/eslint-detailed-reporter/lib/detailed.js -o eslint/report.html",
-    "client-build": "npm run build --prefix client"
+    "client-build": "npm run build --prefix ./client"
   },
   "repository": {
     "type": "git",
